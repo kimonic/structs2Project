@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+    <!--struts-default爆红的解决办法：-->
+    <!--1.项目中要引入struts2-core.jar包-->
+    <!--2.到Project Structure - Facets - Struts2 - File sets - Default File Set -->
+    <!--增加 jar 包内的 struts-default.xml-->
+    <!--<package name="mypackage" extends="struts-default">-->
+        <!--<action name="first">-->
+            <!--<result>/struts2onepart/first.jsp</result>-->
+        <!--</action>-->
+    <!--</package>-->
+    <!--//基础配置  -->
+    <constant name="struts.enable.DynamicMethodInvocation" value="false" />
+    <constant name="struts.devMode" value="true" />
+    <constant name="struts.i18n.reload" value="true" />
+    <constant name="struts.configuration.xml.reload" value="true" />
+
+    <package name="default" namespace="/" extends="struts-default">
+        <action name="first">
+            <result>
+                /struts2onepart/first.jsp
+            </result>
+        </action>
+    </package>
+</struts>
