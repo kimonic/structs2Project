@@ -15,16 +15,43 @@
         <!--</action>-->
     <!--</package>-->
     <!--//基础配置  -->
-    <constant name="struts.enable.DynamicMethodInvocation" value="false" />
+    <!--动态调用action方法需要设置为true-->
+    <constant name="struts.enable.DynamicMethodInvocation" value="true" />
     <constant name="struts.devMode" value="true" />
     <constant name="struts.i18n.reload" value="true" />
     <constant name="struts.configuration.xml.reload" value="true" />
-
-    <package name="default" namespace="/" extends="struts-default">
+    <!--声明包-->
+    <package name="default" extends="struts-default">
+        <!--必须添加该语句才能使用action的动态调用方法,或者逐个添加方法名,用,分隔-->
+        <!--https://blog.csdn.net/iyandong/article/details/52792471-->
+        <global-allowed-methods>regex:.*</global-allowed-methods>
         <action name="first">
             <result>
                 /struts2onepart/first.jsp
             </result>
         </action>
+        <!--定义action-->
+        <action name="UserAction" class="S_14_1.UserAction" >
+            <!--添加成功的映射界面-->
+            <!--result____name属性的默认值为success-->
+            <result name="add">/struts2onepart/user_add.jsp</result>
+            <!--更新成功的映射界面-->
+            <result name="update">/struts2onepart/user_update.jsp</result>
+        </action>
+        <!--action标签中的name属性可以任意起名字,该名字是jsp页面中访问的名字,对应class指定的类-->
+        <action name="greeting" class="S_14_1.GreetingAction" >
+            <!--name属性对应GreetingAction类中execute()方法的返回值-->
+            <result name="success">/struts2onepart/sucess.jsp</result>
+            <result name="error">/struts2onepart/error.jsp</result>
+        </action>
+        <action name="testAction" class="S_14_1.TestAction">
+            <result>/struts2onepart/sucess.jsp</result>
+        </action>
+
+
+        <action name="OGNLAction" class="S_15_1.OGNLAction">
+            <result>/struts2onepart/sucess.jsp</result>
+        </action>
+
     </package>
 </struts>

@@ -12,6 +12,10 @@
     <title>$Title$</title>
   </head>
   <body>
-  <a href="first.action">跳转struts2</a>
+  <a href="first.action">跳转struts2</a><br>
+  <a href="UserAction!add">添加用户信息</a><br>
+  <a href="UserAction!update">更新用户信息</a><br>
+  <a href="testAction.action">map类型的request,session,application</a><br>
+  <a href="OGNLAction.action">OGNL测试</a><br>
   </body>
 </html>
