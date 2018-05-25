@@ -1,0 +1,94 @@
+<!DOCTYPE validators PUBLIC "-//Apache Struts//XWork Validator 1.0.3//EN"
+        "http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd">
+<validators>
+    <field name="userName">
+         <!--必须与响应的action类放置在同意文件夹下-->
+        <!--此处使用required无效必须使用requiredstring-->
+        <field-validator type="requiredstring">
+            <message>用户名不能为空!</message>
+        </field-validator>
+        <field-validator type="stringlength">
+            <param name="maxLength">4</param>
+            <param name="minLength">10</param>
+            <message>用户名最多不能超过${maxLength}个字符,当前是 ${userName.length}个.</message>
+        </field-validator>
+    </field>
+    <!--mybatis 3,spring boot spring cl  spring cloud-->
+
+    <field name="password">
+        <field-validator type="requiredstring">
+            <message>密码不能为空!</message>
+        </field-validator>
+        <field-validator type="stringlength">
+            <param name="maxLength">16</param>
+            <param name="minLength">10</param>
+            <message>密码长度必须在${minLength} 和 ${maxLength}之间,当前是 ${userName.length}位.</message>
+        </field-validator>
+    </field>
+
+</validators>
+
+<!--struts2官方示例-->
+        <!--<!DOCTYPE validators PUBLIC "-//Apache Struts//XWork Validator 1.0.3//EN"-->
+                <!--"http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd">-->
+<!--<validators>-->
+<!--<field name="bar">-->
+    <!--<field-validator type="required">-->
+        <!--<message>You must enter a value for bar.</message>-->
+    <!--</field-validator>-->
+    <!--<field-validator type="int">-->
+        <!--<param name="min">6</param>-->
+        <!--<param name="max">10</param>-->
+        <!--<message>bar must be between ${min} and ${max}, current value is ${bar}.</message>-->
+    <!--</field-validator>-->
+<!--</field>-->
+<!--<field name="bar2">-->
+    <!--<field-validator type="regex">-->
+        <!--<param name="expression">[0-9],[0-9]</param>-->
+        <!--<message>The value of bar2 must be in the format "x, y", where x and y are between 0 and 9</message>-->
+    <!--</field-validator>-->
+<!--</field>-->
+<!--<field name="date">-->
+    <!--<field-validator type="date">-->
+        <!--<param name="min">12/22/2002</param>-->
+        <!--<param name="max">12/25/2002</param>-->
+        <!--<message>The date must be between 12-22-2002 and 12-25-2002.</message>-->
+    <!--</field-validator>-->
+<!--</field>-->
+<!--<field name="foo">-->
+    <!--<field-validator type="int">-->
+        <!--<param name="min">0</param>-->
+        <!--<param name="max">100</param>-->
+        <!--<message key="foo.range">Could not find foo.range!</message>-->
+    <!--</field-validator>-->
+<!--</field>-->
+<!--<validator type="expression">-->
+    <!--<param name="expression">foo lt bar </param>-->
+    <!--<message>Foo must be greater than Bar. Foo = ${foo}, Bar = ${bar}.</message>-->
+<!--</validator>-->
+<!--</validators>-->
+<!--struts2官方示例-->
+
+
+
+
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
+
+<!--<!DOCTYPE validators PUBLIC "-//Apache Struts//XWork Validator 1.0.3//EN"-->
+        <!--"http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd">-->
+
+
+<!--<validators>-->
+    <!--&lt;!&ndash; 验证用户名 &ndash;&gt;-->
+    <!--<field name="userName">-->
+        <!--<field-validator type="requiredstring">-->
+            <!--<message>请输入用户名</message>-->
+        <!--</field-validator>-->
+    <!--</field>-->
+    <!--&lt;!&ndash; 验证密码 &ndash;&gt;-->
+    <!--<field name="password">-->
+        <!--<field-validator type="requiredstring">-->
+            <!--<message>请输入密码</message>-->
+        <!--</field-validator>-->
+    <!--</field>-->
+<!--</validators>-->
