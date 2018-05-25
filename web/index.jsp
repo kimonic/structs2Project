@@ -13,6 +13,8 @@
     <title>$Title$</title>
   </head>
   <body>
+  <%--Java学习路线：html-css-js-jq-javase-数据库-jsp-servlet-
+  Struts2-hibernate-mybatis-spring4-springmvc-ssh-ssm--%>
   <a href="first.action">跳转struts2</a><br>
   <a href="UserAction!add">添加用户信息</a><br>
   <a href="UserAction!update">更新用户信息</a><br>
