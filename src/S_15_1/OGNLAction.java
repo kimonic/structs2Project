@@ -7,23 +7,23 @@ import com.opensymphony.xwork2.ActionSupport;
 import java.util.Map;
 
 public class OGNLAction extends ActionSupport {
-    private static final long serialVersionUID=1L;
+    private static final long serialVersionUID = 1L;
     private String name;
     private Student student;
-    private Map<String,Object> request;
+    private Map<String, Object> request;
 
     @SuppressWarnings("unchecked")
     public OGNLAction() {
-        student=new Student();
+        student = new Student();
         student.setId(1);
         student.setName("张三");
-        name="tom";
-        request= (Map<String, Object>) ActionContext.getContext().get("request");
+        name = "tom";
+        request = (Map<String, Object>) ActionContext.getContext().get("request");
     }
 
     @Override
     public String execute() throws Exception {
-        request.put("info","request测试!");
+        request.put("info", "request测试!");
         return SUCCESS;
     }
 

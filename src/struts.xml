@@ -19,7 +19,10 @@
     <constant name="struts.enable.DynamicMethodInvocation" value="true" />
     <constant name="struts.devMode" value="true" />
     <constant name="struts.i18n.reload" value="true" />
+    <!--在struts.xml文件修改后自动加载-->
     <constant name="struts.configuration.xml.reload" value="true" />
+    <!--允许OGNL调用静态变量和静态方法,默认值为false-->
+    <constant name="struts.ognl.allowStaticMethodAccess" value="true"/>
     <!--声明包-->
     <package name="default" extends="struts-default">
         <!--必须添加该语句才能使用action的动态调用方法,或者逐个添加方法名,用,分隔-->
@@ -51,6 +54,22 @@
 
         <action name="OGNLAction" class="S_15_1.OGNLAction">
             <result>/struts2onepart/sucess.jsp</result>
+        </action>
+        <!--拦截器测试-->
+        <action name="sleepAction" class="S_15_1.SleepAction">
+            <!--timer是内部拦截器,不需要自己编写-->
+            <interceptor-ref name="timer"/>
+            <result>/struts2onepart/sucess.jsp</result>
+        </action>
+        <action name="registerAction" class="S_15_1.RegisterAction">
+            <!--此action如果没有result&#45;&#45;name为input的标签,则会报错,页面不能正常显示-->
+            <!--https://blog.csdn.net/lv_hang515888/article/details/73456789-->
+            <result>/struts2onepart/sucess.jsp</result>
+            <!--<result name="input">/struts2onepart/sucess.jsp</result>-->
+        </action>
+        <action name="loginAction" class="S_15_1.LoginAction">
+            <result>/struts2onepart/sucess.jsp</result>
+            <result name="input">/struts2onepart/login.jsp</result>
         </action>
 
     </package>
