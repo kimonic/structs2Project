@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <!--idea中配置hibernate-->
+    <!--https://www.jianshu.com/p/50e0a7a28b53-->
+    <!--数据库表名无提示解决方法:view.....toolwindow....database......右键schemas......-->
+    <!--database tools.......manage shown schemas......选择对应的数据库为current schemas即可-->
+    <class name="S_16_1.Product" table="product" >
+        <!--指定缓存的同步策略-->
+        <cache usage="read-only"/>
+        <id name="id" column="id" type="java.lang.Integer">
+            <!--Field 'id' doesn't have a default value问题解决方法-->
+            <!--https://blog.csdn.net/huaweitman/article/details/39025553-->
+            <generator class="assigned"/>
+        </id>
+        <!--lazy属性设置延迟加载-->
+        <property name="name" type="string" not-null="true" length="50" lazy="true">
+            <column name="name"/>
+        </property>
+        <property name="price" type="double" not-null="true" >
+            <column name="price"/>
+        </property>
+        <property name="remark" type="string" not-null="true" length="50">
+            <column name="remark"/>
+        </property>
+        <property name="factory" type="string" not-null="true" length="50">
+            <column name="factory"/>
+        </property>
+    </class>
+</hibernate-mapping>

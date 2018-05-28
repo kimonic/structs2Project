@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--解决ERROR ERROR StatusLogger No Log4j 2 configuration file found.
+ Using default configuration (logging only errors to the console),
+ or user programmatically provided configurations. Set system property
+ 'log4j2.debug' to show Log4j 2 internal initialization logging.
+ See https://logging.apache.org/log4j/2.x/manual/configuration.html
+  for instructions on how to configure Log4j 2
+-->
+<!--https://www.cnblogs.com/KissKnife/p/3958086.html-->
+<Configuration status="warn">
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%m%n"/>
+        </Console>
+    </Appenders>
+    <Loggers>
+        <Root level="INFO">
+            <AppenderRef ref="Console"/>
+        </Root>
+    </Loggers>
+</Configuration>
+
+
+        <!--<?xml version="1.0" encoding="UTF-8"?>-->
+
+        <!--<?import java.lang.*?>-->
+        <!--<?import java.util.*?>-->
+        <!--<?import javafx.scene.*?>-->
+        <!--<?import javafx.scene.control.*?>-->
+        <!--<?import javafx.scene.layout.*?>-->
+
+        <!--<AnchorPane xmlns="http://javafx.com/javafx"-->
+        <!--xmlns:fx="http://javafx.com/fxml"-->
+        <!--fx:controller="Log4j2Xml"-->
+        <!--prefHeight="400.0" prefWidth="600.0">-->
+
+        <!--</AnchorPane>-->
