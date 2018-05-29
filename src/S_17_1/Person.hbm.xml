@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <!--idea中配置hibernate-->
+    <!--https://www.jianshu.com/p/50e0a7a28b53-->
+    <!--同一文件多次测试时注意修改表名称,防止表结构冲突-->
+
+    <!--将每个子类映射成一张表**************-->
+    <class name="S_17_1.Person" abstract="true">
+    <!--将每个子类映射成一张表***************-->
+
+        <!--<class name="S_17_1.Person" table="person1">-->
+        <id name="id" column="id" type="java.lang.Integer">
+            <!--<generator class="native"/>-->
+            <!--将每个子类映射成一张表***************-->
+            <generator class="assigned"/>
+            <!--将每个子类映射成一张表***************-->
+
+        </id>
+        <!--位置必须声明在id的下面,否则会出现不能解析的错误-->
+        <!--<discriminator column="type" type="string"/>-->
+        <property name="name" type="string" not-null="true" length="50">
+            <column name="name"/>
+        </property>
+        <property name="age" type="int"/>
+        <!--将每个子类映射成一张表***************-->
+        <union-subclass name="S_17_1.Student" table="student2">
+            <property name="school"/>
+        </union-subclass>
+        <union-subclass name="S_17_1.Staffer" table="staffer2">
+            <property name="company"/>
+        </union-subclass>
+        <!--将每个子类映射成一张表***************-->
+
+        <!--***********************************************************************-->
+        <!--每个子类映射成一张表-->
+        <!--<joined-subclass name="S_17_1.Student" table="student">-->
+            <!--<key column="id"/>-->
+            <!--<property name="school"/>-->
+        <!--</joined-subclass>-->
+
+        <!--<joined-subclass name="S_17_1.Staffer" table="staffer">-->
+            <!--<key column="id"/>-->
+            <!--<property name="company"/>-->
+        <!--</joined-subclass>-->
+        <!--***********************************************************************-->
+
+        <!--***********************************************************************-->
+        <!--将子类映射到超类中,以type进行区分-->
+        <!--<subclass name="S_17_1.Student" discriminator-value="学生">-->
+        <!--<property name="school"/>-->
+        <!--</subclass>-->
+        <!--<subclass name="S_17_1.Staffer" discriminator-value="职员">-->
+        <!--<property name="company"/>-->
+        <!--</subclass>-->
+        <!--***********************************************************************-->
+    </class>
+</hibernate-mapping>
+
+
+
+
+

@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <!--idea中配置hibernate-->
+    <!--https://www.jianshu.com/p/50e0a7a28b53-->
+    <class name="S_17_1.People" table="people" >
+        <id name="id" column="id" type="java.lang.Integer">
+            <generator class="native"/>
+        </id>
+        <property name="name" type="string" not-null="true" length="50">
+            <column name="name"/>
+        </property>
+        <property name="sex" type="string" not-null="true" length="5">
+            <column name="sex"/>
+        </property>
+        <property name="age" type="int" not-null="true">
+            <column name="age"/>
+        </property>
+        <!--设置一对一双向关联-->
+        <!--<one-to-one  name="idCard" class="S_17_1.PeopleIdCard" cascade="all"/>-->
+        <!--设置一对一关联-->
+        <many-to-one  name="peopleIdCard"  unique="true" cascade="delete">
+            <column name="peopleIdCard"/>
+        </many-to-one>
+
+    </class>
+</hibernate-mapping>

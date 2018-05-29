@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <!--idea中配置hibernate-->
+    <!--https://www.jianshu.com/p/50e0a7a28b53-->
+    <class name="S_17_1.Factory" table="factory" >
+        <id name="factoryId" column="factoryId" type="java.lang.Integer">
+            <generator class="native"/>
+        </id>
+        <property name="name" type="string" not-null="true" length="50">
+            <column name="name"/>
+        </property>
+        <!--设置一对多关联-->
+        <set name="books" inverse="true">
+            <key column="factoryId"/>
+            <one-to-many class="S_17_1.Book"/>
+        </set>
+
+    </class>
+</hibernate-mapping>
