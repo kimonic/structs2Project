@@ -5,6 +5,8 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 /**
  * spring 学习教程
  * https://github.com/longjiazuo/spring4.x-project
+ *
+ * Spring4.x基础配置(二):Java配置
  */
 public class SpringTest {
     public static void main(String[] args) {
