@@ -9,7 +9,8 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
  * https://blog.csdn.net/tangtong1/article/details/51326887
  * ssh开发实战项目
  * http://how2j.cn/k/tmall-ssh/tmall-ssh-1254/1254.html
- *
+ *人生设计师博客主页--含大量学习资料javaweb相关
+ * http://blog.longjiazuo.com
  * Spring4.x基础配置(一):依赖注入
  */
 public class SpringTest {

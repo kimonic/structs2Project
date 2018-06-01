@@ -19,57 +19,72 @@
     <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
 
 
-    <!-- 声明式容器事务管理 ,transaction-manager指定事务管理器为transactionManager -->
-    <bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
-        <property name="sessionFactory" ref="sessionFactory"/>
-    </bean>
-    <tx:advice id="txAdvice" transaction-manager="transactionManager">
-        <tx:attributes>
-            <tx:method name="*User"/>
-            <tx:method name="*" propagation="NOT_SUPPORTED" read-only="true"/>
-        </tx:attributes>
-    </tx:advice>
+    <!--&lt;!&ndash; 声明式容器事务管理 ,transaction-manager指定事务管理器为transactionManager &ndash;&gt;-->
+    <!--<bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">-->
+        <!--<property name="sessionFactory" ref="sessionFactory"/>-->
+    <!--</bean>-->
+    <!--<tx:advice id="txAdvice" transaction-manager="transactionManager">-->
+        <!--<tx:attributes>-->
+            <!--<tx:method name="*User"/>-->
+            <!--<tx:method name="*" propagation="NOT_SUPPORTED" read-only="true"/>-->
+        <!--</tx:attributes>-->
+    <!--</tx:advice>-->
 
 
-    <!-- 定义切面，在service包及子包中所有方法中,执行有关的hibernate session的事务操作 -->
-    <aop:config>
-        <!-- 只对业务逻辑层实施事务 -->
-        <aop:pointcut id="serviceOperation" expression="execution( * service..*.*(..))"/>
-        <aop:advisor advice-ref="txAdvice" pointcut-ref="serviceOperation"/>
-    </aop:config>
+    <!--&lt;!&ndash; 定义切面，在service包及子包中所有方法中,执行有关的hibernate session的事务操作 &ndash;&gt;-->
+    <!--<aop:config>-->
+        <!--&lt;!&ndash; 只对业务逻辑层实施事务 &ndash;&gt;-->
+        <!--<aop:pointcut id="serviceOperation" expression="execution( * service..*.*(..))"/>-->
+        <!--<aop:advisor advice-ref="txAdvice" pointcut-ref="serviceOperation"/>-->
+    <!--</aop:config>-->
 
 
-    <!--&lt;!&ndash; 配置dataSource &ndash;&gt;-->
-    <!--<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">-->
-        <!--<property name="driverClass" value="com.mysql.jdbc.Driver"/>-->
-        <!--<property name="jdbcUrl"-->
-                  <!--value="jdbc:mysql://localhost:3306/j2ee?useUnicode=true&amp;characterEncoding=utf-8&amp;autoReconnect=true"/>-->
-        <!--<property name="user" value="root"/>-->
-        <!--<property name="password" value="wyy"/>-->
-        <!--<property name="initialPoolSize" value="5"/>-->
-        <!--<property name="maxPoolSize" value="10"/>-->
+    <!--&lt;!&ndash;&lt;!&ndash; 配置dataSource &ndash;&gt;&ndash;&gt;-->
+    <!--&lt;!&ndash;<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">&ndash;&gt;-->
+        <!--&lt;!&ndash;<property name="driverClass" value="com.mysql.jdbc.Driver"/>&ndash;&gt;-->
+        <!--&lt;!&ndash;<property name="jdbcUrl"&ndash;&gt;-->
+                  <!--&lt;!&ndash;value="jdbc:mysql://localhost:3306/j2ee?useUnicode=true&amp;characterEncoding=utf-8&amp;autoReconnect=true"/>&ndash;&gt;-->
+        <!--&lt;!&ndash;<property name="user" value="root"/>&ndash;&gt;-->
+        <!--&lt;!&ndash;<property name="password" value="wyy"/>&ndash;&gt;-->
+        <!--&lt;!&ndash;<property name="initialPoolSize" value="5"/>&ndash;&gt;-->
+        <!--&lt;!&ndash;<property name="maxPoolSize" value="10"/>&ndash;&gt;-->
+    <!--&lt;!&ndash;</bean>&ndash;&gt;-->
+
+
+    <!--&lt;!&ndash; 配置sessionFactory &ndash;&gt;-->
+    <!--<bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">-->
+        <!--<property name="dataSource" ref="dataSource"/>-->
+        <!--<property name="packagesToScan" value="model"/>-->
+        <!--<property name="hibernateProperties">-->
+            <!--<props>-->
+                <!--<prop key="hibernate.dialect">org.hibernate.dialect.MySQL57Dialect</prop>-->
+                <!--<prop key="hibernate.show_sql">false</prop>-->
+                <!--<prop key="hibernate.format_sql">true</prop>-->
+                <!--<prop key="hibernate.hbm2ddl.auto">update</prop>-->
+                <!--<prop key="hibernate.connection.autocommit">true</prop>-->
+            <!--</props>-->
+        <!--</property>-->
+    <!--</bean>-->
+
+    <!--&lt;!&ndash; 配置hibernateTemplate &ndash;&gt;-->
+    <!--<bean id="hibernateTemplate" class="org.springframework.orm.hibernate5.HibernateTemplate">-->
+        <!--<property name="sessionFactory" ref="sessionFactory"/>-->
     <!--</bean>-->
 
 
-    <!-- 配置sessionFactory -->
-    <bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
-        <property name="dataSource" ref="dataSource"/>
-        <property name="packagesToScan" value="model"/>
-        <property name="hibernateProperties">
-            <props>
-                <prop key="hibernate.dialect">org.hibernate.dialect.MySQL57Dialect</prop>
-                <prop key="hibernate.show_sql">false</prop>
-                <prop key="hibernate.format_sql">true</prop>
-                <prop key="hibernate.hbm2ddl.auto">update</prop>
-                <prop key="hibernate.connection.autocommit">true</prop>
-            </props>
-        </property>
-    </bean>
 
-    <!-- 配置hibernateTemplate -->
-    <bean id="hibernateTemplate" class="org.springframework.orm.hibernate5.HibernateTemplate">
-        <property name="sessionFactory" ref="sessionFactory"/>
-    </bean>
+    <!--&lt;!&ndash; 配置数据源 &ndash;&gt;-->
+    <!--<bean id="dataSource"-->
+          <!--class="org.springframework.jdbc.datasource.DriverManagerDataSource">-->
+        <!--<property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>-->
+        <!--<property name="url" value="jdbc:mysql://localhost:3306/test"/>-->
+        <!--<property name="username" value="root"/>-->
+        <!--<property name="password" value="dingzhixin"/>-->
+    <!--</bean>-->
+    <!--&lt;!&ndash; 为UserDAO注入数据源 &ndash;&gt;-->
+    <!--<bean id="bookDAO" class="S_18_1.s_2_7.BookDAO">-->
+        <!--<property name="dataSource" ref="dataSource"/>-->
+    <!--</bean>-->
 
 </beans>
 

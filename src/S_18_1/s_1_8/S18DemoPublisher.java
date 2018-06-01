@@ -13,23 +13,23 @@ public class S18DemoPublisher {
     @Autowired
     ApplicationContext applicationContext;//1
 
-    public void publish(String msg){
-        applicationContext.publishEvent(new S18Demo(this,msg));//2
+    public void publish(String msg) {
+        applicationContext.publishEvent(new S18Demo(this, msg));//2
     }
+
+
 }
 /**
- import org.springframework.beans.factory.annotation.Autowired;
- import org.springframework.context.ApplicationContext;
- import org.springframework.stereotype.Component;
-
- @Component
- public class DemoPublisher {
- @Autowired
- ApplicationContext applicationContext;//①
-
- public void publish(String msg){
- applicationContext.publishEvent(new DemoEvent(this, msg));//②
- }
-
- }
+ * import org.springframework.beans.factory.annotation.Autowired;
+ * import org.springframework.context.ApplicationContext;
+ * import org.springframework.stereotype.Component;
+ *
+ * @Component public class DemoPublisher {
+ * @Autowired ApplicationContext applicationContext;//①
+ * <p>
+ * public void publish(String msg){
+ * applicationContext.publishEvent(new DemoEvent(this, msg));//②
+ * }
+ * <p>
+ * }
  */

@@ -25,7 +25,6 @@
         <datasource-map>
           <unit-entry name="databasekimonik" value="a73d4b6d-42bf-48f6-92b1-b563db94fad9" />
           <unit-entry name="foo" value="a73d4b6d-42bf-48f6-92b1-b563db94fad9" />
-          <unit-entry name="sessionFactory" />
         </datasource-map>
         <naming-strategy-map />
         <deploymentDescriptor name="hibernate.cfg.xml" url="file://$MODULE_DIR$/src/hibernate.cfg.xml" />
@@ -35,6 +34,7 @@
       <configuration>
         <fileset id="fileset" name="Spring Application Context" removed="false">
           <file>file://$MODULE_DIR$/src/spring-config.xml</file>
+          <file>file://$MODULE_DIR$/src/applicationContext.xml</file>
         </fileset>
       </configuration>
     </facet>
@@ -71,5 +71,7 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="aspectjrt" level="project" />
+    <orderEntry type="library" name="junit-4.12" level="project" />
+    <orderEntry type="library" name="gson-2.8.2" level="project" />
   </component>
 </module>

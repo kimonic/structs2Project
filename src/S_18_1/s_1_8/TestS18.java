@@ -1,6 +1,5 @@
 package S_18_1.s_1_8;
 
-import S_18_1.s_1_5.ElConfig;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 /**
@@ -17,8 +16,9 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
  */
 public class TestS18 {
     public static void main(String[] a){
+        //此处一定要使用正确的配置类
         AnnotationConfigApplicationContext context
-                =new AnnotationConfigApplicationContext(ElConfig.class);
+                =new AnnotationConfigApplicationContext(EventConfig.class);
         S18DemoPublisher demoPublisher=context.getBean(S18DemoPublisher.class);
         demoPublisher.publish("hello application event");
         context.close();
